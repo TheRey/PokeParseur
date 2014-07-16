@@ -10,6 +10,17 @@ public enum Requete
 	Genre("(?<=Sexe<\\/a>).+?(?=<\\/td>)"),
 	InGenre("(?<=; ).+?(?=% mâle)"),
 	
+	TauxCapture("(?<=Taux de capture<\\/a>).+?(?=<\\/td>)"),
+	InTauxCapture("(?<=\"3\"> ).*"),
+	
+	PointsExp("(?<=Points exp.<\\/a>).+?(?=<\\/td>)"),
+	InPointsExp("(?<=\"3\"> ).+?(?= exp)"),
+	
+	ExpMax("(?<=Exp. au niveau 100<\\/a>).+?(?=<\\/td>)"),
+	InExpMax("(?<=\"3\"> ).+?(?= exp)"),
+	
+	Type("(?<=Type<\\/a>).+?(?=<\\/td>)"),
+	
 	Modele("(?<=).+?(?=)");
 	
 	private String information;

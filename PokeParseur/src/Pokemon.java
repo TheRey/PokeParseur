@@ -8,12 +8,12 @@ public class Pokemon
 	String famille;
 	String[] genre;
 	int tauxCapture;
-	String[] experience_experienceMax;
-	String[] types;
+	int[] experience_experienceMax;
+	ArrayList<Integer> types;
 	int idPreEvolution;
-	String[] evolution;
+	int[] evolution;
 	int nombrePasEclosion;
-	String[] groupesOeuf;
+	int[] groupesOeuf;
 	int nombreFormes;
 	String[] taille_poids;
 	String[] statsBase;
@@ -29,5 +29,7 @@ public class Pokemon
 	{
 		this.numero = id;
 		this.genre = new String[2];
+		this.experience_experienceMax = new int[2];
+		this.types = new ArrayList<Integer>();
 	}
 }
