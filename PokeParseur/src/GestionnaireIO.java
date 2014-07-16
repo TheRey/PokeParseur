@@ -32,7 +32,7 @@ public class GestionnaireIO
 		return selection;
 	}
 
-	private String parserTexte(String texte, String requete) throws IOException
+	public String parserTexte(String texte, String requete)
 	{
 
 		Pattern motif = Pattern.compile(requete, Pattern.DOTALL); // DOTALL pour

@@ -28,5 +28,6 @@ public class Pokemon
 	public Pokemon(int id)
 	{
 		this.numero = id;
+		this.genre = new String[2];
 	}
 }
