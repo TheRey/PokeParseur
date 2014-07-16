@@ -2,6 +2,8 @@
 public enum Requete
 {
 	BlocInformatif("(?<=<table class=\"tableaustandard ficheinfo).+?(?=ogg<\\/a>)"),
+	Tout("(?<=html).+?(?=<\\/html>)"),
+	
 	Numero("(?<=№ ).+?(?=<\\/span>)"),
 	
 	Famille("(?<=Famille<\\/a>).+?(?=<\\/td>)"),
@@ -20,6 +22,11 @@ public enum Requete
 	InExpMax("(?<=\"3\"> ).+?(?= exp)"),
 	
 	Type("(?<=Type<\\/a>).+?(?=<\\/td>)"),
+	
+	Eclosion("(?<=cycles - ).+?(?= pas)"),
+	
+	Description("(?<=Pokémon X<\\/a>).+?(?=<\\/dd>)"),
+	InDescription("(?<=<dd>).*"),
 	
 	Modele("(?<=).+?(?=)");
 	

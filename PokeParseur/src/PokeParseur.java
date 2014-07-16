@@ -36,13 +36,14 @@ public class PokeParseur
 	{
 		File ensembleFichiers = new File("fichiers");
 
-		String contenu = "";
+		String contenu = "", complet = "";
 
 		for (File fichier : ensembleFichiers.listFiles())
 		{
 			try
 			{
 				contenu = this.gestionnaireIO.parserFichier(fichier.getName(), Requete.BlocInformatif.toString());
+				complet = this.gestionnaireIO.parserFichier(fichier.getName(), Requete.Tout.toString());
 			}
 			catch (IOException e)
 			{
@@ -50,11 +51,11 @@ public class PokeParseur
 				e.printStackTrace();
 			}
 
-			this.recupererDonnees(contenu);
+			this.recupererDonnees(contenu, complet);
 		}
 	}
 
-	private void recupererDonnees(String contenu)
+	private void recupererDonnees(String contenu, String complet)
 	{
 		String numero = this.gestionnaireIO.parserTexte(contenu, Requete.Numero.toString());
 		Pokemon pokemon = new Pokemon(Integer.parseInt(numero));
@@ -95,15 +96,39 @@ public class PokeParseur
 				pokemon.types.add(entree.getValue());
 			}
 		}
+		
+		//Pré-evo
+		
+		//Evo
+		
+		pokemon.nombrePasEclosion = Integer.parseInt(this.gestionnaireIO.parserTexte(contenu, Requete.Eclosion.toString()));
 
+		//Groupes oeuf
+		
+		pokemon.nombreFormes = 0;
+		
+		//Taille + Poids
+		
+		//Stats bases
+		
+		//EVs
+		
+		//ID Cap spéciales
+		
+		String description = this.gestionnaireIO.parserTexte(complet, Requete.Description.toString());
+		description = this.gestionnaireIO.parserTexte(description, Requete.InDescription.toString());
+		pokemon.description = description.substring(0, description.length() - 1);
+		
 		System.out.println(pokemon.numero + "\n" + pokemon.famille + "\n" + pokemon.genre[0] + " " + pokemon.genre[1]
 				+ "\n" + pokemon.tauxCapture + "\n" + pokemon.experience_experienceMax[0] + " "
 				+ pokemon.experience_experienceMax[1]);
 		
 		for (Integer nombre : pokemon.types)
 		{
-			System.out.print(nombre + " ");
+			System.out.println(nombre + " ");
 		}
+		
+		System.out.println(pokemon.nombrePasEclosion + "\n" + pokemon.description);
 	}
 
 }
