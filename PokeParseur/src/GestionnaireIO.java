@@ -1,6 +1,7 @@
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -31,7 +32,7 @@ public class GestionnaireIO
 		return selection;
 	}
 
-	public String parserTexte(String texte, String requete) throws IOException
+	private String parserTexte(String texte, String requete) throws IOException
 	{
 
 		Pattern motif = Pattern.compile(requete, Pattern.DOTALL); // DOTALL pour
@@ -75,6 +76,19 @@ public class GestionnaireIO
 				}
 		}
 		return new String(tampon);
+	}
+	
+	public void enregistrerPokemon(Pokemon pokemon) throws IOException
+	{
+		File fichier = new File("sortie/code.txt");
+		fichier.createNewFile();
+		FileWriter ecrivain = new FileWriter(fichier);
+
+		ecrivain.write("caca");
+
+		//ecrivain.write(System.getProperty("line.separator") + quelquechose);
+
+		ecrivain.close();
 	}
 }
 
