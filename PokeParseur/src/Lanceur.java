@@ -4,8 +4,9 @@ public class Lanceur
 
 	public static void main(String[] args)
 	{
-		// TODO Auto-generated method stub
-
+		GestionnaireIO gestionnaireIO = new GestionnaireIO();
+		PokeParseur application = new PokeParseur(gestionnaireIO);
+		application.lancer();
 	}
 
 }
