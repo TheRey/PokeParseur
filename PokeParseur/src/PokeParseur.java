@@ -81,8 +81,7 @@ public class PokeParseur
 		pokemon.tauxCapture = Integer.parseInt(tauxCapture.substring(0, tauxCapture.length() - 1));
 
 		String exp = this.gestionnaireIO.parserTexte(contenu, Requete.PointsExp.toString());
-		pokemon.experience_experienceMax[0] = Integer.parseInt(this.gestionnaireIO.parserTexte(exp,
-				Requete.InPointsExp.toString()));
+		pokemon.experience_experienceMax[0] = Integer.parseInt(this.gestionnaireIO.parserTexte(exp,Requete.InPointsExp.toString()));
 
 		String expMax = this.gestionnaireIO.parserTexte(contenu, Requete.ExpMax.toString());
 		expMax = this.gestionnaireIO.parserTexte(expMax, Requete.InExpMax.toString());
@@ -97,8 +96,18 @@ public class PokeParseur
 			}
 		}
 		
-		//Pré-evo
+		String evolution = this.gestionnaireIO.parserTexte(complet, Requete.Evolution.toString());
 		
+		int prevolution = Integer.parseInt(this.gestionnaireIO.parserTexte(evolution,Requete.Prevolution.toString()));
+		if (prevolution != pokemon.numero)
+		{
+			pokemon.idPreEvolution = prevolution;
+		}
+		else
+		{
+			pokemon.idPreEvolution = 0;
+		}
+
 		//Evo
 		
 		pokemon.nombrePasEclosion = Integer.parseInt(this.gestionnaireIO.parserTexte(contenu, Requete.Eclosion.toString()));
@@ -128,7 +137,7 @@ public class PokeParseur
 			System.out.println(nombre + " ");
 		}
 		
-		System.out.println(pokemon.nombrePasEclosion + "\n" + pokemon.description);
+		System.out.println(pokemon.idPreEvolution + "\n" + pokemon.nombrePasEclosion + "\n" + pokemon.description);
 	}
 
 }

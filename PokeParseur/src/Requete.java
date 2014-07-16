@@ -28,6 +28,9 @@ public enum Requete
 	Description("(?<=Pokémon X<\\/a>).+?(?=<\\/dd>)"),
 	InDescription("(?<=<dd>).*"),
 	
+	Evolution("(?<=<td style=\"padding-top:0px;padding-bottom:0px;\">).+?(?=<\\/tr>)"),
+	Prevolution(".+?(?=<\\/td>)"),
+	
 	Modele("(?<=).+?(?=)");
 	
 	private String information;
