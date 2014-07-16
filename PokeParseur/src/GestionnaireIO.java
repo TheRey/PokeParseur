@@ -1,40 +1,80 @@
-
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class GestionnaireIO
 {
 	
-	public ArrayList<String> lireFichier(String nomFichier)
+	public String parserFichier(String nomFichier, String requete) throws IOException
 	{
-		ArrayList<String> contenu = new ArrayList<String>();
+		Pattern motif = Pattern.compile(requete, Pattern.DOTALL); // DOTALL pour
+																	// que "."
+																	// puisse
+																	// aussi
+																	// etre un
+																	// retour
+																	// chariot
+		File source = new File("fichiers/" + nomFichier);
+		String contenu = transformerFichierEnString(source.getAbsolutePath());
+
+		String selection = "";
 		
-		String filePath = "fichiers/"+nomFichier+".html";
-		 
+		Matcher parseur = motif.matcher(contenu);
+		while (parseur.find())
+		{
+			selection = parseur.group();
+		}
+
+		return selection;
+	}
+
+	public String parserTexte(String texte, String requete) throws IOException
+	{
+
+		Pattern motif = Pattern.compile(requete, Pattern.DOTALL); // DOTALL pour
+																	// que "."
+																	// puisse
+																	// aussi
+																	// etre un
+																	// retour
+																	// chariot
+
+		Matcher parseur = motif.matcher(texte);
+		if (parseur.find())
+		{
+			return parseur.group();
+		}
+
+		return null;
+	}
+
+	private String transformerFichierEnString(String cheminFichier) throws java.io.IOException
+	{
+		byte[] tampon = new byte[(int) new File(cheminFichier).length()];
+		BufferedInputStream memoireTampon = null;
 		try
 		{
-			BufferedReader buff = new BufferedReader(new FileReader(filePath));
-			try 
-			{
-				String ligne;
-				while ((ligne = buff.readLine()) != null) 
-				{
-					contenu.add(ligne);
-				}
-			} 
-			finally 
-			{
-				buff.close();
-			}
-		} 
-		catch (IOException e) 
-		{
-			System.out.println("Erreur avec le fichier -- " + e.toString());
+			memoireTampon = new BufferedInputStream(new FileInputStream(cheminFichier));
+			memoireTampon.read(tampon);
 		}
-			
-		return contenu;
+		finally
+		{
+			if (memoireTampon != null)
+				try
+				{
+					memoireTampon.close();
+				}
+				catch (IOException ignored)
+				{
+					/**
+					 * On ne fait rien
+					 */
+				}
+		}
+		return new String(tampon);
 	}
 }
 
