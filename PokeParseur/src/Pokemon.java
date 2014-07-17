@@ -9,7 +9,7 @@ public class Pokemon
 	String[] genre;
 	int tauxCapture;
 	int[] experience_experienceMax;
-	ArrayList<Integer> types;
+	int[] types;
 	int idPreEvolution;
 	int[] evolution;
 	int nombrePasEclosion;
@@ -30,7 +30,7 @@ public class Pokemon
 		this.numero = id;
 		this.genre = new String[2];
 		this.experience_experienceMax = new int[2];
-		this.types = new ArrayList<Integer>();
+		this.types = new int[2];
 		this.evolution = new int[3];
 		this.taille_poids = new String[2];
 		this.statsBase = new String[6];
