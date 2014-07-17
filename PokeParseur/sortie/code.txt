@@ -17,3 +17,4 @@ PokemonTable[252].push([0,0,0,0,0,2])#EVs
 PokemonTable[252].push([53,59])#Talents
 PokemonTable[252].push("Les muscles surdéveloppés de ses cuisses permettent à Massko de sauter incroyablement haut.")#Description
 PokemonTable[252].push([[324,29],[512,41],[596,11],[294,23],[531,16],[297,1],[603,6],[214,1],[177,47],[539,59],[241,53],[303,35],[439,17]])#Attaques apprises par évolution
+

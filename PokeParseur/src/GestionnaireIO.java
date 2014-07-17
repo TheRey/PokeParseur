@@ -114,8 +114,7 @@ public class GestionnaireIO
 		FileWriter ecrivain = new FileWriter(fichier);
 
 		ecrivain.write(pokemon.texte);
-
-		// ecrivain.write(System.getProperty("line.separator") + quelquechose);
+		ecrivain.write(System.getProperty("line.separator"));
 
 		ecrivain.close();
 	}
