@@ -56,6 +56,12 @@ public enum Requete
 	Vitesse("(?<=Vitesse<\\/a>).*"),
 	InVitesse("(?<=<td> ).+?(?=<\\/td>)"),
 
+	Oeufs("(?<=œuf<\\/a>).+?(?=<\\/td>)"),
+	
+	EVs("(?<=Points effort<\\/a>).+?(?=<\\/td>)"),
+	InEVs("(?<=\"3\"> \\+).+?(?= "),
+	
+	Talents("(?<=Talents<\\/a>).+?(?=<\\/td>)"),
 	
 	Modele("(?<=).+?(?=)");
 	

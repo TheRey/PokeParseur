@@ -8,6 +8,7 @@ public class PokeParseur
 	private ArrayList<String> types;
 	private ArrayList<String> oeufs;
 	private ArrayList<String> attaques;
+	private ArrayList<String> talents;
 
 	public PokeParseur(GestionnaireIO gestionnaireIO)
 	{
@@ -15,6 +16,7 @@ public class PokeParseur
 		this.types = this.gestionnaireIO.obtenirLignes("Types");
 		this.oeufs = this.gestionnaireIO.obtenirLignes("Oeufs");
 		this.attaques = this.gestionnaireIO.obtenirLignes("Attaques");
+		this.talents = this.gestionnaireIO.obtenirLignes("Talents");
 	}
 
 	public void lancer()
@@ -116,7 +118,25 @@ public class PokeParseur
 		
 		pokemon.nombrePasEclosion = Integer.parseInt(this.gestionnaireIO.parserTexte(contenu, Requete.Eclosion.toString()));
 
-		//Groupes oeuf
+		String oeufs = this.gestionnaireIO.parserTexte(contenu, Requete.Oeufs.toString());
+		ArrayList<Integer> nombresOeufs = this.obtenirNumero(this.oeufs, oeufs);
+		switch (nombresOeufs.size())
+		{
+		case 0 :
+			pokemon.oeufs[0] = 0;
+			pokemon.oeufs[1] = 0;
+			break;
+		case 1 :
+			pokemon.oeufs[0] = nombresOeufs.get(0);
+			pokemon.oeufs[1] = 0;
+			break;
+		case 2 :
+			pokemon.oeufs[0] = nombresOeufs.get(0);
+			pokemon.oeufs[1] = nombresOeufs.get(1);
+			break;
+		default :
+			System.out.println("Problèmes sur les numéros d'oeufs !");
+		}
 		
 		pokemon.nombreFormes = 0;
 		
@@ -146,9 +166,40 @@ public class PokeParseur
 		VIT = this.gestionnaireIO.parserTexte(VIT, Requete.InVitesse.toString());
 		pokemon.statsBase[5] = VIT.substring(0, VIT.length() - 1);
 		
-		//EVs
+		String EVs = this.gestionnaireIO.parserTexte(contenu, Requete.EVs.toString());
+		int index = 0;
+		for (Stats stat : Stats.values())
+		{
+			if (EVs.contains(stat.toString()))
+			{
+				pokemon.statsEVs[index] = this.gestionnaireIO.parserTexte(EVs,Requete.InEVs.toString() + stat.toString() + ")");
+			}
+			else
+			{
+				pokemon.statsEVs[index] = "0";
+			}
+			index++;
+		}
 		
-		//ID Cap spéciales
+		String talents = this.gestionnaireIO.parserTexte(contenu, Requete.Talents.toString());
+		ArrayList<Integer> nombresTalents = this.obtenirNumero(this.talents, talents);
+		switch (nombresTalents.size())
+		{
+		case 0 :
+			pokemon.talents[0] = 0;
+			pokemon.talents[1] = 0;
+			break;
+		case 1 :
+			pokemon.talents[0] = nombresTalents.get(0);
+			pokemon.talents[1] = 0;
+			break;
+		case 2 :
+			pokemon.talents[0] = nombresTalents.get(0);
+			pokemon.talents[1] = nombresTalents.get(1);
+			break;
+		default :
+			System.out.println("Problèmes sur les numéros de talent !");
+		}
 		
 		String description = this.gestionnaireIO.parserTexte(complet, Requete.Description.toString());
 		description = this.gestionnaireIO.parserTexte(description, Requete.InDescription.toString());
@@ -160,7 +211,11 @@ public class PokeParseur
 				+ "\n" + pokemon.tauxCapture + "\n" + pokemon.experience_experienceMax[0] + " "
 				+ pokemon.experience_experienceMax[1]);
 		
-		System.out.println(pokemon.types[0] + " " + pokemon.types[1]);
+		System.out.println("Types : " + pokemon.types[0] + " " + pokemon.types[1]);
+		
+		System.out.println("Oeufs : " + pokemon.oeufs[0] + " " + pokemon.oeufs[1]);
+		
+		System.out.println("Talents : " + pokemon.talents[0] + " " + pokemon.talents[1]);
 		
 		System.out.println(pokemon.idPreEvolution 
 				+ "\n" + pokemon.evolution[0] + " " + pokemon.evolution[1] + " " + pokemon.evolution[2]
@@ -168,9 +223,17 @@ public class PokeParseur
 				+ "\n" + pokemon.taille_poids[0] + " " + pokemon.taille_poids[1]
 				+ "\n" + pokemon.description);
 		
+		System.out.print("Stats base : ");
 		for (int i = 0; i<6; i++)
 		{
 			System.out.print(pokemon.statsBase[i] + " ");
+		}
+		System.out.println();
+		
+		System.out.print("Stats EVs : ");
+		for (int i = 0; i<6; i++)
+		{
+			System.out.print(pokemon.statsEVs[i] + " ");
 		}
 		System.out.println();
 	}
