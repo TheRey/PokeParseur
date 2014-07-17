@@ -1,6 +1,8 @@
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map.Entry;
 
 public class PokeParseur
 {
@@ -77,7 +79,7 @@ public class PokeParseur
 		pokemon.experience_experienceMax[1] = Integer.parseInt(expMax.replace(" ", ""));
 
 		String types = this.gestionnaireIO.parserTexte(contenu, Requete.Type.toString());
-		ArrayList<Integer> nombresTypes = this.obtenirNumero(this.types, types);
+		ArrayList<Integer> nombresTypes = this.obtenirNumeros(this.types, types);
 		switch (nombresTypes.size())
 		{
 		case 0 :
@@ -119,7 +121,7 @@ public class PokeParseur
 		pokemon.nombrePasEclosion = Integer.parseInt(this.gestionnaireIO.parserTexte(contenu, Requete.Eclosion.toString()));
 
 		String oeufs = this.gestionnaireIO.parserTexte(contenu, Requete.Oeufs.toString());
-		ArrayList<Integer> nombresOeufs = this.obtenirNumero(this.oeufs, oeufs);
+		ArrayList<Integer> nombresOeufs = this.obtenirNumeros(this.oeufs, oeufs);
 		switch (nombresOeufs.size())
 		{
 		case 0 :
@@ -182,7 +184,7 @@ public class PokeParseur
 		}
 		
 		String talents = this.gestionnaireIO.parserTexte(contenu, Requete.Talents.toString());
-		ArrayList<Integer> nombresTalents = this.obtenirNumero(this.talents, talents);
+		ArrayList<Integer> nombresTalents = this.obtenirNumeros(this.talents, talents);
 		switch (nombresTalents.size())
 		{
 		case 0 :
@@ -205,7 +207,17 @@ public class PokeParseur
 		description = this.gestionnaireIO.parserTexte(description, Requete.InDescription.toString());
 		pokemon.description = description.substring(0, description.length() - 1);
 		
-		//Attaques
+		String attaques = this.gestionnaireIO.parserTexte(complet, Requete.DerniereGen.toString());
+		String ligne = "", nomAttaque = "";
+		do
+		{
+			ligne = this.gestionnaireIO.parserTexte(attaques, Requete.Ligne.toString());
+			nomAttaque = this.gestionnaireIO.parserTexte(ligne, Requete.NomAttaque.toString());
+			pokemon.attaquesParNiveau.put(this.obtenirNumeroAttaque(nomAttaque)+1, this.obtenirNiveauAttaque(ligne));
+			attaques = attaques.replaceFirst("<td><a ", "");
+		} while (attaques.contains("<td><a "));
+
+		// Affichage texte
 		
 		System.out.println(pokemon.nom + "\n" + pokemon.numero + "\n" + pokemon.famille + "\n" + pokemon.genre[0] + " " + pokemon.genre[1]
 				+ "\n" + pokemon.tauxCapture + "\n" + pokemon.experience_experienceMax[0] + " "
@@ -236,9 +248,15 @@ public class PokeParseur
 			System.out.print(pokemon.statsEVs[i] + " ");
 		}
 		System.out.println();
+		
+		System.out.println("Attaques par niveau");
+		for (Entry<Integer,Integer> entree : pokemon.attaquesParNiveau.entrySet())
+		{
+			System.out.println(entree.getKey() + " au niveau " + entree.getValue());
+		}
 	}
 	
-	public ArrayList<Integer> obtenirNumero(ArrayList<String> liste, String texte)
+	public ArrayList<Integer> obtenirNumeros(ArrayList<String> liste, String texte)
 	{
 		ArrayList<Integer> nombres = new ArrayList<Integer>();
 		
@@ -251,5 +269,38 @@ public class PokeParseur
 		}
 		return nombres;
 	}
-
+	
+	public int obtenirNumeroAttaque(String attaque)
+	{
+		for (String entree : this.attaques)
+		{
+			if(entree.contains(attaque))
+			{
+				return this.attaques.indexOf(entree);
+			}
+		}
+		return 0;
+	}
+	
+	public int obtenirNiveauAttaque(String texte)
+	{
+		System.out.println(texte);
+		String niveau = this.gestionnaireIO.parserTexte(texte, Requete.NiveauAttaque.toString());
+		System.out.println(niveau);
+		
+		if (niveau != null)
+		{
+			niveau = niveau.replace(" ", "");
+			
+			if (niveau.isEmpty())
+			{
+				return 1;
+			}
+			else
+			{
+				return Integer.parseInt(niveau);
+			}
+		}
+		return 1;
+	}
 }

@@ -63,6 +63,11 @@ public enum Requete
 	
 	Talents("(?<=Talents<\\/a>).+?(?=<\\/td>)"),
 	
+	DerniereGen("(?<=<tbody class=\"ListeAttaquesVI\">).+?(?=<\\/table>)"),
+	Ligne("(?<=<td><a).+?(?=<\\/tr>)"),
+	NomAttaque("(?<=\">).+?(?=<\\/a><\\/td>)"),
+	NiveauAttaque("(?<=>N.)( |)(1|2|3|4|5|6|7|8|9|^ D).*(?=<\\/td>)"),
+	
 	Modele("(?<=).+?(?=)");
 	
 	private String information;

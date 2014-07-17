@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class Pokemon
@@ -20,10 +21,12 @@ public class Pokemon
 	String[] statsEVs;
 	int[] talents;
 	String description;
-	ArrayList<Attaque> attaquesParNiveau;
+	HashMap<Integer,Integer> attaquesParNiveau;
+	/* Non utilisé
 	ArrayList attaquesParCapsules;
-	ArrayList attaquesQuandIlsBaisent;
+	ArrayList attaquesParReproduction;
 	ArrayList attaqueMaitreCapacite;
+	*/
 	
 	public Pokemon(int id)
 	{
@@ -37,5 +40,6 @@ public class Pokemon
 		this.statsEVs = new String[6];
 		this.oeufs = new int[2];
 		this.talents = new int[2];
+		this.attaquesParNiveau = new HashMap<Integer,Integer>();
 	}
 }
