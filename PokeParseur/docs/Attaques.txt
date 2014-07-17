@@ -1,0 +1,610 @@
+1À la Queue
+2Abîme
+3Aboiement
+4Abri
+5Acidarmure
+6Acide
+7Acrobatie
+8Acupression
+9Aéroblast
+10Aéropique
+11Affûtage
+12Aiguisage
+13Aile d'Acier
+14Air Veinard
+15Aire d'Eau
+16Aire d'Herbe
+17Aire de Feu
+18Allègement
+19Amnésie
+20Ampleur
+21Anneau Hydro
+22Anti-Air
+23Anti-Brume
+24Anti-Soin
+25Appel Attak
+26Appel Défense
+27Appel Soins
+28Après Vous
+29Aqua-Jet
+30Armure
+31Aromathérapi
+32Assistance
+33Assurance
+34Astuce Force
+35Atout
+36Atterrissage
+37Attraction 
+38Attrition
+39Aurasphère
+40Aurore
+41Avalanche
+42Avale
+43Babil
+44Bâillement
+45Bain de Smog
+46Balance
+47Balayage
+48Balayette
+49Ball'Brume
+50Ball'Glace
+51Ball'Météo
+52Ball'Ombre
+53Balle Graine
+54Bang Sonique
+55Barrage
+56Baston
+57Bec Vrille
+58Bélier
+59Berceuse
+60Blabla Dodo
+61Blizzard
+62Bluff
+63Bomb'Œuf
+64Bomb-Beurk
+65Bombaimant
+66Bombe Acide
+67Boost
+68Bouclier
+69Bouclier Royal
+70Boue-Bombe
+71Boul'Armure
+72Boule Élek
+73Boule Roc
+74Bourdon
+75Boutefeu
+76Brouhaha
+77Brouillard
+78Brume
+79Brume Capiteuse
+80Buée Noire
+81Bulldoboule
+82Bulles d'O
+83Cadeau
+84Cage-Éclair
+85Calcination
+86Câlinerie
+87Camaraderie
+88Camouflage
+89Canicule
+90Canon Graine
+91Carnareket
+92Cascade
+93Casse-Brique
+94Cauchemar
+95Célébration
+96Champ Brumeux
+97Champ Herbu
+98Change Éclair
+99Changement Vitesse
+100Chant Antique
+101Chant Canon
+102Charge
+103Charge Foudre
+104Charge-Os
+105Chargeur
+106Charme
+107Chatouille
+108Choc Mental
+109Choc Psy
+110Choc Venin
+111Chute Glace
+112Chute Libre
+113Châtiment
+114Clairvoyance
+115Claquoir
+116Clonage
+117Close Combat
+118Cogne
+119Cognobidon
+120Colère
+121Combo-Griffe
+122Confidence
+123Constriction
+124Contre
+125Conversion
+126Conversion2
+127Copie
+128Copie Type
+129Coquilame
+130Corps Perdu
+131Cotogarde
+132Coud'Boue
+133Coud'Krâne
+134Coup Bas
+135Coup d'Boule
+136Coup d'Jus
+137Coup d'Main
+138Coup Double
+139Coup Victoire
+140Coup-Croix
+141Coupe
+142Coupe Psycho
+143Coupe-Vent
+144Cradovague
+145Crèvecœur
+146Croc de Mort
+147Croc Fatal
+148Crochet Venin
+149Croco Larme
+150Crocs Éclair
+151Crocs Feu
+152Crocs Givre
+153Croissance
+154Cru-Aile
+155Cyclone
+156Damoclès
+157Danse Draco
+158Danse du Feu
+159Danseflamme
+160Danse-Fleur
+161Danse-Folle
+162Danse-Lames
+163Danse-Lune
+164Danse Pluie
+165Danse-Plume
+166Dard Mortel
+167Dard-Nuée
+168Dard-Venin
+169Déflagration
+170Dégommage
+171DélugePlasmique
+172Demi-Tour
+173Dépit
+174Dernier Mot
+175Dernier Recours
+176Destruction
+177Détection
+178Détrempage
+179Détricanon
+180Détritus
+181Dévorêve
+182Direct Toxik
+183Distorsion
+184Don Naturel
+185Double Baffe
+186Double-Dard
+187Double-Pied
+188Doux Baiser
+189Doux Parfum
+190Draco-Queue
+191Draco-Rage
+192Dracocharge
+193Dracochoc
+194Dracogriffe
+195Draco Météor
+196Dracosouffle
+197Dynamopoing
+198E-Coque
+199Éboulement
+200Ébullilave
+201Ébullition
+202Échange
+203Échange Psy
+204Écho
+205Éclair
+206Éclair Croix
+207Éclair Fou
+208Éclair Gelé
+209Éclat Magique
+210Éclate Griffe
+211Éclate-Roc
+212Éclats Glace
+213Éco-Sphère
+214Écras'Face
+215Écrasement
+216Écume
+217Effort
+218Élécanon
+219Électacle
+220Électrisation
+221Embargo
+222Empal'Korne
+223Encore
+224Encornebois
+225Enroulement
+226Entrave
+227Ère Glaciaire
+228Éructation
+229Éruption
+230Escalade
+231Essorage
+232Étincelle
+233Étonnement
+234Étreinte
+235Exploforce
+236Explonuit
+237Explosion
+238Extrasenseur
+239Exuviation
+240Fatal-Foudre
+241Faux-Chage
+242Façade
+243Feinte
+244Fertilisation
+245Feu d'Enfer
+246Feu Ensorcelé
+247Feu Follet
+248Feu Glacé
+249Feu Sacré
+250Feuillemagik
+251Flair
+252Flamme Bleue
+253Flamme Croix
+254Flammèche
+255Flash
+256Flatterie
+257Fléau
+258Flying Press
+259Force
+260Force Ajoutée
+261Force Cachée
+262Force Chtonienne
+263Force Cosmik
+264Force Poigne
+265Force-Nature
+266Forte-Paume
+267Fouet Lianes
+268Fracass'Tête
+269Frappe Atlas
+270Frappe Psy
+271Frénésie
+272Frotte-Frimousse
+273Frustration
+274Fulmifer
+275Fulmigraine
+276Furie
+277Garde Florale
+278Garde Large
+279Gaz Toxik
+280Géo-Contrôle
+281Giclédo
+282Giga Impact
+283Giga-Sangsue
+284Glaciation
+285Glas de Soin
+286Gonflette
+287Gravité
+288Grêle
+289Gribouille
+290Griffe
+291Griffe Acier
+292Griffe Ombre
+293Grimace
+294Grincement
+295Grobisou
+296Grondement
+297Groz'Yeux
+298Guillotine
+299Gyroballe
+300Halloween
+301Hantise
+302Harcèlement
+303Hâte
+304Hurle-Temps
+305Hurlement
+306Hydroblast
+307Hydrocanon
+308Hydroqueue
+309Hypnose
+310Imitation
+311Implore
+312Incendie
+313Interversion
+314Jackpot
+315Jet de Sable
+316Jet-Pierres
+317Jugement
+318Koud'Korne
+319Lait à Boire
+320Lame d'Air
+321Lame de Roc
+322Lame Ointe
+323Lame Sainte
+324Lame-Feuille
+325Lance-Boue
+326Lance-Flammes
+327Lance-Soleil
+328Lancécrou
+329Larcin
+330Laser Glace
+331Léchouille
+332Lévikinésie
+333Ligotage
+334Lilliput
+335Lire-Esprit
+336Lumi-Éclat
+337Luminocanon
+338Lumiqueue
+339Lyophilisation
+340Mach Punch
+341Machination
+342Mâchouille
+343Magné-Contrôle
+344Mains Jointes
+345Malédiction
+346Maléfice Sylvain
+347Mania
+348Marto-Poing
+349Martobois
+350Massd'Os
+351Mawashi Geri
+352Méga-Sangsue
+353Mégacorne
+354Mégafouet
+355Mégaphone
+356Météores
+357Métronome
+358Mimi-Queue
+359Mimique
+360Miroi-Tir
+361Mitra-Poing
+362Moi d'Abord
+363Morphing
+364Morsure
+365Mort-Ailes
+366Mur de Fer
+367Mur Lumière
+368Nitrocharge
+369Nuée de Poudre
+370Nœud Herbe
+371Ocroupi
+372Octazooka
+373Œil Miracle
+374Ombre Nocturne
+375Ombre Portée
+376Onde Boréale
+377Onde de Choc
+378Onde Folie
+379Onde Vide
+380Ondes Étranges
+381Orage Adamantin
+382Osmerang
+383Ouragan
+384Papillodanse
+385Par Ici
+386Para-Spore
+387Parabocharge
+388Paresse
+389Partage Force
+390Partage Garde
+391Passe-Cadeau
+392Passe-Passe
+393Patience
+394Peignée
+395Permucœur
+396Permuforce
+397Permugarde
+398Photocopie
+399Phytomixeur
+400Picanon
+401Pico-Défense
+402Picore
+403Picots
+404Picpic
+405Pics Toxik
+406Pied Brûleur
+407Pied Sauté
+408Pied Voltige
+409Piège de Roc
+410Piétisol
+411Pilonnage
+412Pince-Masse
+413Piqué
+414Piqûre
+415Pisto-Poing
+416Pistolet à O
+417Piège de Venin
+418Plaie-Croix
+419Plaquage
+420Plénitude
+421Plongée
+422Plumo-Queue
+423Poing Boost
+424Poing Comète
+425Poing Dard
+426Poing de Feu
+427Poing Météor
+428Poing Ombre
+429Poing-Éclair
+430Poing-Karaté
+431Poing-Glace
+432Poison-Croix
+433Poliroche
+434Possessif
+435Poudre Dodo
+436Poudre Fureur
+437Poudre Toxik
+438Poudreuse
+439Poursuite
+440Pouvoir Antique
+441Pouvoir Lunaire
+442Prescience
+443Presse
+444Prévention
+445Prélèvem. Destin
+446Projection
+447Protection
+448Provoc
+449Psycho Boost
+450Psyko
+451Psykoud'Boul
+452Puissance
+453Puissance Cachée
+454Punition
+455Purédpois
+456Queue de Fer
+457Queue-Poison
+458Racines
+459Rafale Feu
+460Rafale Psy
+461Râle Mâle
+462Rancune
+463Rapace
+464Rayon Chargé
+465Rayon Gemme
+466Rayon Lune
+467Rayon Signal
+468Rayon Simple
+469Rebond
+470Rebondifeu
+471Recyclage
+472Reflet
+473Reflet Magik
+474Regard Médusant
+475Regard Noir
+476Regard Touchant
+477Régénération
+478Relais
+479Relâche
+480Rengorgement
+481Renversement
+482Repli
+483Repos
+484Représailles
+485Requiem
+486Retenue
+487Retour
+488Réveil Forcé
+489Revenant
+490Riposte
+491Roc-Boulet
+492Ronflement
+493Roue de Feu
+494Roulade
+495Rugissement
+496Rune Protect
+497Ruse
+498Sabotage
+499Sacrifice
+500Saisie
+501Saumure
+502Sécrétion
+503Séduction
+504Séisme
+505Sheauriken
+506Siffl'Herbe
+507Siphon
+508Soin
+509Sonicboom
+510Soucigraine
+511Souffle Glacé
+512Souplesse
+513Souvenir
+514Spatio-Rift
+515Spore
+516Spore Coton
+517Stalagtite
+518Stimulant
+519Stockage
+520Stratopercut
+521Strido-Son
+522Suc Digestif
+523Surchauffe
+524Surf
+525Surpuissance
+526Survinsecte
+527Synchropeine
+528Synthèse
+529Tacle Feu
+530Tacle Lourd
+531Taillade
+532Tatamigaeshi
+533Techno Buster
+534Télékinésie
+535Téléport
+536Telluriforce
+537Tempête Florale
+538Tempête de Sable
+539Tempête Verte
+540Ten-danse
+541Tenacité
+542Tête de Fer
+543Tir de Boue
+544Toile
+545Toile Gluante
+546Toile Élek
+547Tomberoche
+548Tonnerre
+549Torgnoles
+550Tornade
+551Tour Rapide
+552Tourbi-Sable
+553Tourmagik
+554Tourmente
+555Tourniquet
+556Tout ou Rien
+557Toxik
+558Tranch'Air
+559Tranch'Herbe
+560Tranche
+561Tranche-Nuit
+562Trempette
+563Tricherie
+564Triplattaque
+565Triple-Pied
+566Trou Noir
+567Tunnel
+568Tunnelier
+569Ultimapoing
+570Ultimawashi
+571Ultralaser
+572Ultrason
+573Uppercut
+574Vague Psy
+575Vampibaiser
+576Vampigraine
+577Vampipoing
+578Vampirisme
+579Vantardise
+580Végé-Attak
+581Vendetta
+582Vengeance
+583Vent Argenté
+584Vent Arrière
+585Vent Féérique
+586Vent Glace
+587Vent Mauvais
+588Vent Violent
+589Verrou Enchanté
+590Verrouillage
+591Vibra-Soin
+592Vibraqua
+593Vibrobscur
+594Vigilance
+595Vitesse Extrême
+596Vive-Attaque
+597Vœu
+598Vœu Soin
+599Voile Miroir
+600Voix Enjôleuse
+601Vol
+602Vol Magnétik
+603Vol-Vie
+604Vortex Magma
+605Yama Arashi
+606Yoga
+607Zénith
+608Zone Étrange
+609Zone Magique
+610Étrennes

@@ -1,0 +1,27 @@
+#4
+PokemonTable.push([])
+PokemonTable[3].push("")#Nom
+PokemonTable[3].push("")#Famille
+PokemonTable[3].push([false,0])#Genre:Légendaire?/%Mâle
+PokemonTable[3].push(0)#Taux de capture
+PokemonTable[3].push([0,0])#Expérience/Expérience Max
+PokemonTable[3].push([0,0])#Types
+PokemonTable[3].push(0)#ID Pré-Evolution
+PokemonTable[3].push([[0],[0],[0]])#Evolution:ID/Types/Valeurs
+PokemonTable[3].push(0)#Nombre de pas avant éclosion
+PokemonTable[3].push([0,0])#Groupes d'Oeuf
+PokemonTable[3].push(0)#Nombre de formes
+PokemonTable[3].push([0,0])#Taille/Poids
+PokemonTable[3].push([0,0,0,0,0,0])#Stats de base:PV,Atk,Def,AtkSp,DefSp,Vit
+PokemonTable[3].push([0,0,0,0,0,0])#EV Donnés:PV,Atk,Def,AtkSp,DefSp,Vit
+PokemonTable[3].push([0,0])#ID Capacités Spéciales
+#Info
+PokemonTable[3].push("")
+#Attaques apprises par niveau:[[ID Atk,Niveau],[ID Atk,Niveau]...]
+PokemonTable[3].push([[0,0],[0,0]])
+#Attaques apprenables par CT/CS:ID Atk,ID Atk...
+PokemonTable[3].push([0,0])
+#Attaques apprenables par Reproduction:ID Atk,ID Atk...
+PokemonTable[3].push([0,0])
+#Attaques apprenables par Maître Capacité:ID Atk,ID Atk...
+PokemonTable[3].push([0,0])

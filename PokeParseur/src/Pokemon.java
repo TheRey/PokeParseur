@@ -31,5 +31,8 @@ public class Pokemon
 		this.genre = new String[2];
 		this.experience_experienceMax = new int[2];
 		this.types = new ArrayList<Integer>();
+		this.evolution = new int[3];
+		this.taille_poids = new String[2];
+		this.statsBase = new String[6];
 	}
 }

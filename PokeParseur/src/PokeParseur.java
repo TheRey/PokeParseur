@@ -59,6 +59,8 @@ public class PokeParseur
 	{
 		String numero = this.gestionnaireIO.parserTexte(contenu, Requete.Numero.toString());
 		Pokemon pokemon = new Pokemon(Integer.parseInt(numero));
+		
+		pokemon.nom = this.gestionnaireIO.parserTexte(complet, Requete.Nom.toString());
 
 		String famille = this.gestionnaireIO.parserTexte(contenu, Requete.Famille.toString());
 		famille = this.gestionnaireIO.parserTexte(famille, Requete.InFamille.toString());
@@ -108,7 +110,13 @@ public class PokeParseur
 			pokemon.idPreEvolution = 0;
 		}
 
-		//Evo
+		String supevolution = this.gestionnaireIO.parserTexte(evolution, "(?<=" + pokemon.numero + Requete.Supevolution.toString());
+		if (supevolution.contains("</td>"))
+		{
+			pokemon.evolution[0] = Integer.parseInt(this.gestionnaireIO.parserTexte(supevolution, Requete.Evolution2.toString()));
+			String blocEvolution = this.gestionnaireIO.parserTexte(complet, Requete.Evolution3.toString() + pokemon.nom  + ").*");
+			pokemon.evolution[2] = Integer.parseInt(this.gestionnaireIO.parserTexte(blocEvolution, Requete.Niveau.toString()));
+		}
 		
 		pokemon.nombrePasEclosion = Integer.parseInt(this.gestionnaireIO.parserTexte(contenu, Requete.Eclosion.toString()));
 
@@ -116,9 +124,31 @@ public class PokeParseur
 		
 		pokemon.nombreFormes = 0;
 		
-		//Taille + Poids
+		String taille = this.gestionnaireIO.parserTexte(contenu, Requete.Taille.toString());
+		pokemon.taille_poids[0] = this.gestionnaireIO.parserTexte(taille,Requete.InTaille.toString());
 		
-		//Stats bases
+		String poids = this.gestionnaireIO.parserTexte(contenu, Requete.Poids.toString());
+		pokemon.taille_poids[1] = this.gestionnaireIO.parserTexte(poids,Requete.InPoids.toString());
+		
+		String stats = this.gestionnaireIO.parserTexte(complet, Requete.Stats.toString());
+		String PV = this.gestionnaireIO.parserTexte(stats, Requete.PV.toString());
+		PV = this.gestionnaireIO.parserTexte(PV, Requete.InPV.toString());
+		pokemon.statsBase[0] = PV.substring(0, PV.length() - 1);
+		String ATK = this.gestionnaireIO.parserTexte(stats, Requete.Attaque.toString());
+		ATK = this.gestionnaireIO.parserTexte(ATK, Requete.InAttaque.toString());
+		pokemon.statsBase[1] = ATK.substring(0, ATK.length() - 1);
+		String DEF = this.gestionnaireIO.parserTexte(stats, Requete.Defense.toString());
+		DEF = this.gestionnaireIO.parserTexte(DEF, Requete.InDefense.toString());
+		pokemon.statsBase[2] = DEF.substring(0, DEF.length() - 1);
+		String ATKSPE = this.gestionnaireIO.parserTexte(stats, Requete.AtkSpe.toString());
+		ATKSPE = this.gestionnaireIO.parserTexte(ATKSPE, Requete.InAtkSpe.toString());
+		pokemon.statsBase[3] = ATKSPE.substring(0, ATKSPE.length() - 1);
+		String DEFSPE = this.gestionnaireIO.parserTexte(stats, Requete.DefSpe.toString());
+		DEFSPE = this.gestionnaireIO.parserTexte(DEFSPE, Requete.InDefSpe.toString());
+		pokemon.statsBase[4] = DEFSPE.substring(0, DEFSPE.length() - 1);
+		String VIT = this.gestionnaireIO.parserTexte(stats, Requete.Vitesse.toString());
+		VIT = this.gestionnaireIO.parserTexte(VIT, Requete.InVitesse.toString());
+		pokemon.statsBase[5] = VIT.substring(0, VIT.length() - 1);
 		
 		//EVs
 		
@@ -128,7 +158,7 @@ public class PokeParseur
 		description = this.gestionnaireIO.parserTexte(description, Requete.InDescription.toString());
 		pokemon.description = description.substring(0, description.length() - 1);
 		
-		System.out.println(pokemon.numero + "\n" + pokemon.famille + "\n" + pokemon.genre[0] + " " + pokemon.genre[1]
+		System.out.println(pokemon.nom + "\n" + pokemon.numero + "\n" + pokemon.famille + "\n" + pokemon.genre[0] + " " + pokemon.genre[1]
 				+ "\n" + pokemon.tauxCapture + "\n" + pokemon.experience_experienceMax[0] + " "
 				+ pokemon.experience_experienceMax[1]);
 		
@@ -137,7 +167,17 @@ public class PokeParseur
 			System.out.println(nombre + " ");
 		}
 		
-		System.out.println(pokemon.idPreEvolution + "\n" + pokemon.nombrePasEclosion + "\n" + pokemon.description);
+		System.out.println(pokemon.idPreEvolution 
+				+ "\n" + pokemon.evolution[0] + " " + pokemon.evolution[1] + " " + pokemon.evolution[2]
+				+ "\n" + pokemon.nombrePasEclosion 
+				+ "\n" + pokemon.taille_poids[0] + " " + pokemon.taille_poids[1]
+				+ "\n" + pokemon.description);
+		
+		for (int i = 0; i<6; i++)
+		{
+			System.out.print(pokemon.statsBase[i] + " ");
+		}
+		System.out.println();
 	}
 
 }
