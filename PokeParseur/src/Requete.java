@@ -22,7 +22,7 @@ public enum Requete
 	ExpMax("(?<=Exp. au niveau 100<\\/a>).+?(?=<\\/td>)"),
 	InExpMax("(?<=\"3\"> ).+?(?= exp)"),
 	
-	Type("(?<=Type<\\/a>).+?(?=<\\/td>)"),
+	Type("(?<=Type(|s)<\\/a>).+?(?=<\\/td>)"),
 	
 	Eclosion("(?<=cycles - ).+?(?= pas)"),
 	
@@ -63,7 +63,7 @@ public enum Requete
 	
 	Talents("(?<=Talents<\\/a>).+?(?=<\\/td>)"),
 	
-	DerniereGen("(?<=<tbody class=\"ListeAttaquesVI\">).+?(?=<\\/table>)"),
+	DerniereGen("(?<=<tbody class=\"ListeAttaques(VI|6)\">).+?(?=<\\/table>)"),
 	Ligne("(?<=<td><a).+?(?=<\\/tr>)"),
 	NomAttaque("(?<=\">).+?(?=<\\/a><\\/td>)"),
 	NiveauAttaque("(?<=>N.)( |)(1|2|3|4|5|6|7|8|9|^ D).*(?=<\\/td>)"),

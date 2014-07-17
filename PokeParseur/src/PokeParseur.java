@@ -100,8 +100,13 @@ public class PokeParseur
 		}
 		
 		String evolution = this.gestionnaireIO.parserTexte(complet, Requete.Evolution.toString());
-		
-		int prevolution = Integer.parseInt(this.gestionnaireIO.parserTexte(evolution,Requete.Prevolution.toString()));
+		String evolution2 = this.gestionnaireIO.parserTexte(evolution,Requete.Prevolution.toString());
+		int prevolution = 0;
+		if (!evolution2.contains("&#160;"))
+		{
+			if (evolution2 != null)
+				prevolution = Integer.parseInt(evolution2);
+		}
 		if (prevolution != pokemon.numero)
 		{
 			pokemon.idPreEvolution = prevolution;
@@ -116,7 +121,15 @@ public class PokeParseur
 		{
 			pokemon.evolution[0] = Integer.parseInt(this.gestionnaireIO.parserTexte(supevolution, Requete.Evolution2.toString()));
 			String blocEvolution = this.gestionnaireIO.parserTexte(complet, Requete.Evolution3.toString() + pokemon.nom  + ").*");
-			pokemon.evolution[2] = Integer.parseInt(this.gestionnaireIO.parserTexte(blocEvolution, Requete.Niveau.toString()));
+			String evolution3 = this.gestionnaireIO.parserTexte(blocEvolution, Requete.Niveau.toString());
+			if (evolution3 != null)
+			{
+				pokemon.evolution[2] = Integer.parseInt(evolution3);
+			}
+			else
+			{
+				pokemon.evolution[2] = 0;
+			}
 		}
 		
 		pokemon.nombrePasEclosion = Integer.parseInt(this.gestionnaireIO.parserTexte(contenu, Requete.Eclosion.toString()));
@@ -210,14 +223,17 @@ public class PokeParseur
 		
 		String attaques = this.gestionnaireIO.parserTexte(complet, Requete.DerniereGen.toString());
 		String ligne = "", nomAttaque = "";
-		do
+		if (attaques != null)
 		{
-			ligne = this.gestionnaireIO.parserTexte(attaques, Requete.Ligne.toString());
-			nomAttaque = this.gestionnaireIO.parserTexte(ligne, Requete.NomAttaque.toString());
-			pokemon.attaquesParNiveau.put(this.obtenirNumeroAttaque(nomAttaque)+1, this.obtenirNiveauAttaque(ligne));
-			attaques = attaques.replaceFirst("<td><a ", "");
-		} while (attaques.contains("<td><a "));
-
+			do
+			{
+				ligne = this.gestionnaireIO.parserTexte(attaques, Requete.Ligne.toString());
+				nomAttaque = this.gestionnaireIO.parserTexte(ligne, Requete.NomAttaque.toString());
+				pokemon.attaquesParNiveau.put(this.obtenirNumeroAttaque(nomAttaque)+1, this.obtenirNiveauAttaque(ligne));
+				attaques = attaques.replaceFirst("<td><a ", "");
+			} while (attaques.contains("<td><a "));
+		}
+		
 		this.ecrirePokémon(pokemon);
 		try
 		{
@@ -275,9 +291,12 @@ public class PokeParseur
 		
 		for (String entree : liste)
 		{
-			if(texte.contains(entree))
+			if (texte != null)
 			{
-				nombres.add(liste.indexOf(entree)+1);
+				if(texte.contains(entree))
+				{
+					nombres.add(liste.indexOf(entree)+1);
+				}
 			}
 		}
 		return nombres;
@@ -287,9 +306,12 @@ public class PokeParseur
 	{
 		for (String entree : this.attaques)
 		{
-			if(entree.contains(attaque))
+			if (attaque != null)
 			{
-				return this.attaques.indexOf(entree);
+				if(entree.contains(attaque))
+				{
+					return this.attaques.indexOf(entree);
+				}
 			}
 		}
 		return 0;
@@ -342,7 +364,9 @@ public class PokeParseur
 		{
 			texteEvolution += "[" + ligne.getKey() + "," + ligne.getValue() + "],";
 		}
-		texteEvolution = texteEvolution.substring(0, texteEvolution.length() - 1);
+		
+		if (texteEvolution.length() != 0)
+			texteEvolution = texteEvolution.substring(0, texteEvolution.length()-1);
 		
 		pokemon.texte += texteEvolution + "])#Attaques apprises par évolution" + "\n";
 		
