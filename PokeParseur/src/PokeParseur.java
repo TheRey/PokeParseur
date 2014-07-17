@@ -368,7 +368,10 @@ public class PokeParseur
 		if (texteEvolution.length() != 0)
 			texteEvolution = texteEvolution.substring(0, texteEvolution.length()-1);
 		
-		pokemon.texte += texteEvolution + "])#Attaques apprises par évolution" + "\n";
+		pokemon.texte += texteEvolution + "])#Attaques apprises par niveau [[ID_Attaque,Niveau],[ID_Attaque,Niveau],[...]]" + "\n";
+		pokemon.texte += "PokemonTable[" + (pokemon.numero-1) + "].push([,,])#Attaques par CT/CS [ID_Attaque,ID_Attaque,...]"+ "\n";
+		pokemon.texte += "PokemonTable[" + (pokemon.numero-1) + "].push([,,])#Attaques par reproduction [ID_Attaque,ID_Attaque,...]"+ "\n";
+		pokemon.texte += "PokemonTable[" + (pokemon.numero-1) + "].push([,,])#Attaques par Maitre Capacité [ID_Attaque,ID_Attaque,...]"+ "\n";
 		
 		System.out.println(pokemon.texte);
 	}
