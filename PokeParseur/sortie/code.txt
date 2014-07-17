@@ -1,0 +1,19 @@
+#253
+PokemonTable.push([])
+PokemonTable[252].push("Massko")#Nom
+PokemonTable[252].push("Bois Gecko")#Famille
+PokemonTable[252].push([false,87.5])#Genre:Légendaire?/%Mâle
+PokemonTable[252].push(45)#Taux de capture
+PokemonTable[252].push([141,1059860])#Expérience/Expérience Max
+PokemonTable[252].push([11,0])#Types
+PokemonTable[252].push(252)#ID Pré-Evolution
+PokemonTable[252].push([[254],[0],[36]])#Evolution:ID/Type/Valeur
+PokemonTable[252].push(5120)#Nombre de pas avant éclosion
+PokemonTable[252].push([6,13])#Groupes d'Oeuf
+PokemonTable[252].push(0)#Nombre de formes
+PokemonTable[252].push([0,9,21,6])#Taille/Poids
+PokemonTable[252].push([50,65,45,85,65,95])#Stats de base
+PokemonTable[252].push([0,0,0,0,0,2])#EVs
+PokemonTable[252].push([53,59])#Talents
+PokemonTable[252].push("Les muscles surdéveloppés de ses cuisses permettent à Massko de sauter incroyablement haut.")#Description
+PokemonTable[252].push([[324,29],[512,41],[596,11],[294,23],[531,16],[297,1],[603,6],[214,1],[177,47],[539,59],[241,53],[303,35],[439,17]])#Attaques apprises par évolution

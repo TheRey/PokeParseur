@@ -1,7 +1,6 @@
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map.Entry;
 
 public class PokeParseur
@@ -11,6 +10,7 @@ public class PokeParseur
 	private ArrayList<String> oeufs;
 	private ArrayList<String> attaques;
 	private ArrayList<String> talents;
+	private Ecrivain ecrivain;
 
 	public PokeParseur(GestionnaireIO gestionnaireIO)
 	{
@@ -19,6 +19,7 @@ public class PokeParseur
 		this.oeufs = this.gestionnaireIO.obtenirLignes("Oeufs");
 		this.attaques = this.gestionnaireIO.obtenirLignes("Attaques");
 		this.talents = this.gestionnaireIO.obtenirLignes("Talents");
+		this.ecrivain = new Ecrivain();
 	}
 
 	public void lancer()
@@ -217,8 +218,19 @@ public class PokeParseur
 			attaques = attaques.replaceFirst("<td><a ", "");
 		} while (attaques.contains("<td><a "));
 
-		// Affichage texte
+		this.ecrirePokémon(pokemon);
+		try
+		{
+			this.gestionnaireIO.enregistrerPokemon(pokemon);
+		}
+		catch (IOException e)
+		{
+			System.out.println("Pas réussit à enregistrer le pokémon n° " + pokemon.numero);
+			e.printStackTrace();
+		}
 		
+		// Affichage texte
+		/*
 		System.out.println(pokemon.nom + "\n" + pokemon.numero + "\n" + pokemon.famille + "\n" + pokemon.genre[0] + " " + pokemon.genre[1]
 				+ "\n" + pokemon.tauxCapture + "\n" + pokemon.experience_experienceMax[0] + " "
 				+ pokemon.experience_experienceMax[1]);
@@ -254,8 +266,9 @@ public class PokeParseur
 		{
 			System.out.println(entree.getKey() + " au niveau " + entree.getValue());
 		}
+		*/
 	}
-	
+
 	public ArrayList<Integer> obtenirNumeros(ArrayList<String> liste, String texte)
 	{
 		ArrayList<Integer> nombres = new ArrayList<Integer>();
@@ -284,9 +297,7 @@ public class PokeParseur
 	
 	public int obtenirNiveauAttaque(String texte)
 	{
-		System.out.println(texte);
 		String niveau = this.gestionnaireIO.parserTexte(texte, Requete.NiveauAttaque.toString());
-		System.out.println(niveau);
 		
 		if (niveau != null)
 		{
@@ -302,5 +313,39 @@ public class PokeParseur
 			}
 		}
 		return 1;
+	}
+	
+	public void ecrirePokémon(Pokemon pokemon)
+	{
+		pokemon.texte += "#" + pokemon.numero + "\n";
+		pokemon.texte += "PokemonTable.push([])" + "\n";
+		pokemon.texte += "PokemonTable[" + (pokemon.numero-1) + "].push(\"" + pokemon.nom + "\")#Nom"+ "\n";
+		pokemon.texte += "PokemonTable[" + (pokemon.numero-1) + "].push(\"" + pokemon.famille + "\")#Famille"+ "\n";
+		pokemon.texte += "PokemonTable[" + (pokemon.numero-1) + "].push([" + pokemon.genre[0] + "," + pokemon.genre[1] + "])#Genre:Légendaire?/%Mâle"+ "\n";
+		pokemon.texte += "PokemonTable[" + (pokemon.numero-1) + "].push(" + pokemon.tauxCapture + ")#Taux de capture"+ "\n";
+		pokemon.texte += "PokemonTable[" + (pokemon.numero-1) + "].push([" + pokemon.experience_experienceMax[0] + "," + pokemon.experience_experienceMax[1] + "])#Expérience/Expérience Max" + "\n";
+		pokemon.texte += "PokemonTable[" + (pokemon.numero-1) + "].push([" + pokemon.types[0] + "," + pokemon.types[1] + "])#Types"+ "\n";
+		pokemon.texte += "PokemonTable[" + (pokemon.numero-1) + "].push(" + pokemon.idPreEvolution + ")#ID Pré-Evolution"+ "\n";
+		pokemon.texte += "PokemonTable[" + (pokemon.numero-1) + "].push([[" + pokemon.evolution[0] + "],[" + pokemon.evolution[1] + "],[" + pokemon.evolution[2] + "]])#Evolution:ID/Type/Valeur" + "\n";
+		pokemon.texte += "PokemonTable[" + (pokemon.numero-1) + "].push(" + pokemon.nombrePasEclosion + ")#Nombre de pas avant éclosion"+ "\n";
+		pokemon.texte += "PokemonTable[" + (pokemon.numero-1) + "].push([" + pokemon.oeufs[0] + "," + pokemon.oeufs[1] + "])#Groupes d'Oeuf"+ "\n";
+		pokemon.texte += "PokemonTable[" + (pokemon.numero-1) + "].push(" + pokemon.nombreFormes + ")#Nombre de formes"+ "\n";
+		pokemon.texte += "PokemonTable[" + (pokemon.numero-1) + "].push([" + pokemon.taille_poids[0] + "," + pokemon.taille_poids[1] + "])#Taille/Poids"+ "\n";
+		pokemon.texte += "PokemonTable[" + (pokemon.numero-1) + "].push([" + pokemon.statsBase[0] + "," + pokemon.statsBase[1] + "," + pokemon.statsBase[2] + "," + pokemon.statsBase[3] + "," + pokemon.statsBase[4] + "," + pokemon.statsBase[5] + "])#Stats de base"+ "\n";
+		pokemon.texte += "PokemonTable[" + (pokemon.numero-1) + "].push([" + pokemon.statsEVs[0] + "," + pokemon.statsEVs[1] + "," + pokemon.statsEVs[2] + "," + pokemon.statsEVs[3] + "," + pokemon.statsEVs[4] + "," + pokemon.statsEVs[5] + "])#EVs"+ "\n";
+		pokemon.texte += "PokemonTable[" + (pokemon.numero-1) + "].push([" + pokemon.talents[0] + "," + pokemon.talents[1] + "])#Talents"+ "\n";
+		pokemon.texte += "PokemonTable[" + (pokemon.numero-1) + "].push(\"" + pokemon.description + "\")#Description"+ "\n";
+		pokemon.texte += "PokemonTable[" + (pokemon.numero-1) + "].push([";
+		
+		String texteEvolution = "";
+		for (Entry<Integer,Integer> ligne : pokemon.attaquesParNiveau.entrySet())
+		{
+			texteEvolution += "[" + ligne.getKey() + "," + ligne.getValue() + "],";
+		}
+		texteEvolution = texteEvolution.substring(0, texteEvolution.length() - 1);
+		
+		pokemon.texte += texteEvolution + "])#Attaques apprises par évolution" + "\n";
+		
+		System.out.println(pokemon.texte);
 	}
 }

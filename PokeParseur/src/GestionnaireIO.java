@@ -113,7 +113,7 @@ public class GestionnaireIO
 		fichier.createNewFile();
 		FileWriter ecrivain = new FileWriter(fichier);
 
-		ecrivain.write("caca");
+		ecrivain.write(pokemon.texte);
 
 		// ecrivain.write(System.getProperty("line.separator") + quelquechose);
 
